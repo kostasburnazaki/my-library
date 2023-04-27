@@ -13,6 +13,15 @@ export interface Course {
   meta: Meta,
 }
 
+export interface CourseShort {
+  title: string,
+  lessonsCount: number,
+  previewImageLink: string,
+  rating: number,
+  slug: string,
+  skills: string[],
+}
+
 interface Meta {
   slug: string,
   skills: string[],

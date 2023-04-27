@@ -1,6 +1,6 @@
+import { CURRENT_PAGE } from "./constValues";
+
 export const initValues = {
-  courses: [],
   loadingStatus: true,
-  currentPage: 1,
-  coursesPerPage: 5,
+  currentPage: CURRENT_PAGE,
 }
