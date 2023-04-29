@@ -1,8 +1,10 @@
-import React, { FC, useRef, useState } from "react";
-import { Course, CourseShort } from "../../types/Course";
+import React, { FC, useState } from "react";
+
 import { CoursePreview } from "../CoursePreview";
-import { JsOptions } from "../../types/VideoJSOptions";
 import { Pagination } from "../Pagination";
+
+import { Course, CourseShort } from "../../types/Course";
+import { JsOptions } from "../../types/VideoJSOptions";
 
 export const Courses: FC = () => {
   const [currentCourses, setCurrentCourses] = useState<Course[] | null>(null);

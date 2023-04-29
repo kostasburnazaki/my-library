@@ -1,9 +1,12 @@
 import React, { FC, useRef } from "react";
-import { VideoJS } from "../Player";
-import { Skills } from "../Skills";
 import { NavLink } from "react-router-dom";
+
+import { Skills } from "../Skills";
+
 import { CourseShort } from "../../types/Course";
 import { JsOptions } from "../../types/VideoJSOptions";
+
+import { VideoJS } from "../Player";
 
 type Props = {
   course: CourseShort,

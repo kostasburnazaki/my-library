@@ -1,15 +1,24 @@
+import React,
+{ useContext,
+  useRef,
+  FC,
+  useEffect,
+  useState
+} from "react";
 import classNames from "classnames";
-import React, { useContext, useRef } from "react";
-import { FC, useEffect, useState } from "react";
+
 import { useParams } from "react-router-dom";
+
 import { fetchClient } from "../../utils/api";
-import { Course, DetailedCourse, Lesson } from "../../types/Course";
-import { VideoJS } from "../Player";
 import { CoursesContext } from "../../utils/CoursesContext";
-import { initValues } from "../../constants/initValues";
-import { Loader } from "../Loader";
-import { ButtonBack } from "../ButtonBack";
+
+import { Course, DetailedCourse, Lesson } from "../../types/Course";
 import { JsOptions } from "../../types/VideoJSOptions";
+
+import { initValues } from "../../constants/initValues";
+import { ButtonBack } from "../ButtonBack";
+import { Loader } from "../Loader";
+import { VideoJS } from "../Player";
 
 export const CourseComponent: FC = () => {
   const [loading, setIsLoading] = useState<boolean>(initValues.loadingStatus);

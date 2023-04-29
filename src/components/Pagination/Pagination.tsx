@@ -7,10 +7,13 @@ import React, {
   useState
 } from "react";
 import classNames from 'classnames';
+
 import { CoursesContext } from "../../utils/CoursesContext";
 import { COURSES_PER_PAGE as coursesPerPage } from '../../constants/constValues';
 import { initValues } from "../../constants/initValues";
+
 import { Course } from "../../types/Course";
+
 import { Loader } from "../Loader";
 
 

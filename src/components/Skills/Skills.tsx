@@ -6,15 +6,13 @@ type Props = {
 
 export const Skills: FC<Props> = ({ skills }) => (
   <ul className="list">
-    {skills && (
-      skills.map(skill => (
-        <li
-          key={skill}
-          className="
+    {skills.map(skill => (
+      <li
+        key={skill}
+        className="
           is-italic
           list-item
         ">{skill}</li>
-      ))
-    )}
+    ))}
   </ul>
 );
