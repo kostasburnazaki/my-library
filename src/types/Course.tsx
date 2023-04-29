@@ -51,3 +51,7 @@ export interface DetailedCourse extends Course {
   lessons: Lesson[],
   containsLockedLessons: boolean
 }
+
+export interface Courses {
+  courses: Course[],
+}

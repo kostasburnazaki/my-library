@@ -2,22 +2,21 @@ import React, { FC, useRef, useEffect } from "react";
 import videojs from 'video.js';
 import '../../../node_modules/video.js/dist/video-js.css';
 import { JsOptions } from "../../types/VideoJSOptions";
+import Player from '../../../node_modules/video.js/dist/types/player';
 
 
 type Props = {
   options: JsOptions,
-  onReady: (player: any) => void,
+  onReady: (player: Player) => void,
 };
 
 export const VideoJS: FC<Props> = ({ options, onReady }) => {
   const videoRef = useRef<HTMLDivElement | null>(null);
-  const playerRef = useRef<any>(null);
+  const playerRef = useRef<Player | null>(null);
 
   useEffect(() => {
 
-    // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
-      // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode. 
       const videoElement = document.createElement("video-js");
 
       videoElement.classList.add('vjs-big-play-centered');
@@ -29,8 +28,6 @@ export const VideoJS: FC<Props> = ({ options, onReady }) => {
         });
       }
 
-      // You could update an existing player in the `else` block here
-      // on prop change, for example:
     } else {
       const player = playerRef.current;
 
