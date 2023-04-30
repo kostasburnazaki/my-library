@@ -5,6 +5,7 @@ import { Skills } from "../Skills";
 
 import { CourseShort } from "../../types/Course";
 import { JsOptions } from "../../types/VideoJSOptions";
+import Player from "video.js/dist/types/player";
 
 import { VideoJS } from "../Player";
 
@@ -25,9 +26,9 @@ export const CoursePreview: FC<Props> = (
   videoJsOptions,
 }
 ) => {
-  const playerRef = useRef(null);
+  const playerRef = useRef<Player | null>(null);
   
-  const handlePlayerReady = (player: any) => {
+  const handlePlayerReady = (player: Player) => {
     playerRef.current = player;
 
     player.on("mouseover", function () {
