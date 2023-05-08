@@ -52,7 +52,8 @@ export const CoursePreview: FC<Props> = (
                 has-text-weight-bold
                 is-uppercase
                 is-underlined
-              ">
+              "
+          >
         {title}
       </h2>
 

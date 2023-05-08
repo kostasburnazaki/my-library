@@ -32,7 +32,6 @@ interface CourseVideoPreview {
   link: string,
   duration: number,
   previewImageLink: string
-
 }
 
 export interface Lesson {

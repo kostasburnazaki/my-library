@@ -1,4 +1,4 @@
-import React, {
+  import React, {
   Dispatch,
   FC,
   SetStateAction,
@@ -16,7 +16,6 @@ import { Course } from "../../types/Course";
 
 import { Loader } from "../Loader";
 
-
 type Props = {
   setCurrentCourses: Dispatch<SetStateAction<Course[] | null>>,
 };
@@ -24,7 +23,7 @@ type Props = {
 export const Pagination: FC<Props> = ({ setCurrentCourses }) => {
   const [currentPage, setCurrentPage] = useState<number>(initValues.currentPage);
   const { courses } = useContext(CoursesContext);
-
+  
   useEffect(() => {
     const indexOfLastCourse = currentPage * coursesPerPage;
     const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
@@ -33,7 +32,7 @@ export const Pagination: FC<Props> = ({ setCurrentCourses }) => {
       setCurrentCourses(currentCourses);
     }
   }, [courses, currentPage, setCurrentCourses])
-
+  
   if (courses) {
     const pageNumbers = [];
     const totalCourses = courses.length;

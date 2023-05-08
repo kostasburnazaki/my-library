@@ -68,7 +68,6 @@ export const Courses: FC = () => {
                 </li>
               )
             })
-
             }
           </ul>
         </>

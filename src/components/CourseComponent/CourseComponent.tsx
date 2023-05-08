@@ -21,7 +21,7 @@ import { Loader } from "../Loader";
 import { VideoJS } from "../Player";
 
 export const CourseComponent: FC = () => {
-  const [loading, setIsLoading] = useState<boolean>(initValues.loadingStatus);
+  const [isLoading, setIsLoading] = useState<boolean>(initValues.loadingStatus);
   const [course, setCourse] = useState<DetailedCourse>();
 
   const { courses } = useContext(CoursesContext);
@@ -65,10 +65,10 @@ export const CourseComponent: FC = () => {
     <>
       <ButtonBack />
 
-      {loading
+      {isLoading
         ? <Loader />
         : (
-          <div className="container px-6">
+          <div className="container px-6" data-testid="course">
             {course?.lessons
               .sort((l1, l2) => (l1.order - l2.order))
               .map((lesson: Lesson) => {
@@ -94,12 +94,11 @@ export const CourseComponent: FC = () => {
                   <div key={lesson.id} className="lesson pt-6">
 
                     <h3 className="
-                subtitle
-                is-3
-                has-text-centered
-              ">
+                      subtitle
+                      is-3
+                      has-text-centered
+                    ">
                       {lesson.title}
-
                     </h3>
 
                     <div className="columns">
