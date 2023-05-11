@@ -1,4 +1,4 @@
-[DEMO LINK](https://kostasburnazaki.github.io/genesis-test/)
+[DEMO LINK](https://kostasburnazaki.github.io/clean-code-principes-kostasburnazaki/)
 
 # App Architecture
 
