@@ -8,6 +8,10 @@ import {
   Routes,
 } from 'react-router-dom';
 
+import classNames from 'classnames';
+
+import './styles/main.scss';
+
 import { Header } from './components/Header';
 import { Loader } from './components/Loader';
 import { Courses } from './components/Courses'
@@ -21,8 +25,6 @@ import { fetchClient } from './utils/api';
 
 import { Course } from './types/Course';
 
-import './styles/main.scss';
-import classNames from 'classnames';
 
 export const App = () => {
   const [courses, setCourses] = useState<Course[] | null>(null);
