@@ -1,5 +1,6 @@
 import React,
-{ useContext,
+{
+  useContext,
   useRef,
   FC,
   useEffect,
@@ -11,6 +12,7 @@ import { useParams } from "react-router-dom";
 
 import { fetchClient } from "../../utils/api";
 import { CoursesContext } from "../../utils/CoursesContext";
+import { ThemeContext } from "../../utils/ThemeContext";
 
 import { Course, DetailedCourse, Lesson } from "../../types/Course";
 import { JsOptions } from "../../types/VideoJSOptions";
@@ -25,6 +27,7 @@ export const CourseComponent: FC = () => {
   const [course, setCourse] = useState<DetailedCourse>();
 
   const { courses } = useContext(CoursesContext);
+  const { darkTheme } = useContext(ThemeContext);
 
   const { slug = '' } = useParams();
   const playerRef = useRef(null);
@@ -38,7 +41,7 @@ export const CourseComponent: FC = () => {
           setCourse(courseData);
           setIsLoading(false);
         }
-        
+
         fetchData()
           .catch(err => console.warn(err))
       } else {
@@ -93,11 +96,14 @@ export const CourseComponent: FC = () => {
                 return (
                   <div key={lesson.id} className="lesson pt-6">
 
-                    <h3 className="
-                      subtitle
-                      is-3
-                      has-text-centered
-                    ">
+                    <h3
+                      className={classNames(
+                        'subtitle',
+                        'is-3',
+                        'has-text-centered',
+                        { 'light': darkTheme }
+                      )}
+                    >
                       {lesson.title}
                     </h3>
 
@@ -121,7 +127,11 @@ export const CourseComponent: FC = () => {
                           Status: {lesson.status}
                         </p>
 
-                        <h5 className="subtitle pt-4">
+                        <h5 className={classNames(
+                          'subtitle',
+                          'pt-4',
+                          { 'light': darkTheme }
+                        )}>
                           Description:
                         </h5>
 

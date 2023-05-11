@@ -15,6 +15,7 @@ import { initValues } from "../../constants/initValues";
 import { Course } from "../../types/Course";
 
 import { Loader } from "../Loader";
+import { ThemeContext } from "../../utils/ThemeContext";
 
 type Props = {
   setCurrentCourses: Dispatch<SetStateAction<Course[] | null>>,
@@ -23,6 +24,8 @@ type Props = {
 export const Pagination: FC<Props> = ({ setCurrentCourses }) => {
   const [currentPage, setCurrentPage] = useState<number>(initValues.currentPage);
   const { courses } = useContext(CoursesContext);
+  const { darkTheme } = useContext(ThemeContext);
+
   
   useEffect(() => {
     const indexOfLastCourse = currentPage * coursesPerPage;
@@ -46,8 +49,11 @@ export const Pagination: FC<Props> = ({ setCurrentCourses }) => {
           {pageNumbers.map(pageNumber => (
             <li key={pageNumber}>
               <a
-                className={classNames('pagination-link',
-                  { 'is-current': pageNumber === currentPage })}
+                className={classNames(
+                  'pagination-link',
+                  { 'is-current': pageNumber === currentPage },
+                  { 'light': darkTheme}
+                )}
                 onClick={(e) => {
                   e.preventDefault();
                   setCurrentPage(pageNumber);

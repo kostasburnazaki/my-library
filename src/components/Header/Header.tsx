@@ -1,9 +1,18 @@
-import React, { FC } from "react";
+import React, {
+  FC,
+  useContext
+} from "react";
+import classNames from "classnames";
 import { NavLink } from "react-router-dom";
+import { ThemeContext } from "../../utils/ThemeContext";
 
 export const Header: FC = () => {
+  const { darkTheme, setDarkTheme } = useContext(ThemeContext);
+
   return (
-    <header className='has-background-light'>
+    <header className={
+      classNames({ dark: darkTheme })
+    }>
       <NavLink to='/home'>
         <h1 className="
           is-link
@@ -16,6 +25,21 @@ export const Header: FC = () => {
           Courses
         </h1>
       </NavLink>
+
+      <div className="p-4">
+        <input
+          type="checkbox"
+          onChange={() => setDarkTheme(!darkTheme)}
+          className="checkbox"
+          id="checkbox"
+        />
+
+        <label htmlFor="checkbox" className="checkbox-label">
+          <i className="fas fa-sun"></i>
+          <i className="fas fa-moon"></i>
+          <span className="ball"></span>
+        </label>
+      </div>
     </header>
   )
 };

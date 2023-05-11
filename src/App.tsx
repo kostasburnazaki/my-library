@@ -16,13 +16,18 @@ import { CourseComponent } from './components/CourseComponent';
 import { initValues } from './constants/initValues';
 
 import { CoursesContext } from './utils/CoursesContext';
+import { ThemeContext } from './utils/ThemeContext';
 import { fetchClient } from './utils/api';
 
 import { Course } from './types/Course';
 
+import './styles/main.scss';
+import classNames from 'classnames';
+
 export const App = () => {
   const [courses, setCourses] = useState<Course[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(initValues.loadingStatus);
+  const [darkTheme, setDarkTheme] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,38 +42,42 @@ export const App = () => {
 
   return (
     <>
-      <Header />
+      <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
+        <Header />
 
-      <main className='has-background-light'>
-        <CoursesContext.Provider value={{ courses }}>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                isLoading
-                  ? <Loader />
-                  : (
-                    <Courses />
-                  )
-              }
-            />
+        <main className={
+          classNames({ dark: darkTheme })
+        }>
+          <CoursesContext.Provider value={{ courses }}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  isLoading
+                    ? <Loader />
+                    : (
+                      <Courses />
+                    )
+                }
+              />
 
-            <Route
-              path="home"
-              element={
-                <Navigate to="/" replace />
-              }
-            />
+              <Route
+                path="home"
+                element={
+                  <Navigate to="/" replace />
+                }
+              />
 
-            <Route
-              path=":slug"
-              element={
-                <CourseComponent />
-              }
-            />
-          </Routes>
-        </CoursesContext.Provider>
-      </main >
+              <Route
+                path=":slug"
+                element={
+                  <CourseComponent />
+                }
+              />
+            </Routes>
+          </CoursesContext.Provider>
+        </main >
+      </ThemeContext.Provider>
     </>
   );
 };
