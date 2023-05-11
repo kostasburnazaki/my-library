@@ -1,7 +1,7 @@
 {
   "name": "genesis-test",
   "version": "0.1.0",
-  "homepage": "https://kostasburnazaki.github.io/genesis-test",
+  "homepage": "https://kostasburnazaki.github.io/clean-code-principes-kostasburnazaki/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
