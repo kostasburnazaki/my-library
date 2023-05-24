@@ -43,43 +43,41 @@ export const App = () => {
   }, []);
 
   return (
-    <>
-      <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
-        <Header />
+    <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
+      <Header />
 
-        <main className={
-          classNames({ dark: darkTheme })
-        }>
-          <CoursesContext.Provider value={{ courses }}>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  isLoading
-                    ? <Loader />
-                    : (
-                      <Courses />
-                    )
-                }
-              />
+      <main className={
+        classNames({ dark: darkTheme })
+      }>
+        <CoursesContext.Provider value={{ courses }}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                isLoading
+                  ? <Loader />
+                  : (
+                    <Courses />
+                  )
+              }
+            />
 
-              <Route
-                path="home"
-                element={
-                  <Navigate to="/" replace />
-                }
-              />
+            <Route
+              path="home"
+              element={
+                <Navigate to="/" replace />
+              }
+            />
 
-              <Route
-                path=":slug"
-                element={
-                  <CourseComponent />
-                }
-              />
-            </Routes>
-          </CoursesContext.Provider>
-        </main >
-      </ThemeContext.Provider>
-    </>
+            <Route
+              path=":slug"
+              element={
+                <CourseComponent />
+              }
+            />
+          </Routes>
+        </CoursesContext.Provider>
+      </main >
+    </ThemeContext.Provider>
   );
 };
